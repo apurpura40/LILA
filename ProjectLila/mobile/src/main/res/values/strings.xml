@@ -1,4 +1,9 @@
 <resources>
-    <string name="app_name">Project Lila</string>
+    <string name="app_name">Life Nav</string>
     <string name="action_settings">Settings</string>
+    <string name="sequence_something">Sequence Something</string>
+    <string name="say_something">Say Something</string>
+    <string name="be_somewhere">Be Somewhere</string>
+    <string name="do_something">Do Something</string>
+    <string name="get_metrics">Get Metrics</string>
 </resources>
