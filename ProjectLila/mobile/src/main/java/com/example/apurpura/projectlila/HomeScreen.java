@@ -30,6 +30,7 @@ public class HomeScreen extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.toolbar_bottom, menu);
         return true;
     }
+    //SOME COMMENT
 
 
     @Override
