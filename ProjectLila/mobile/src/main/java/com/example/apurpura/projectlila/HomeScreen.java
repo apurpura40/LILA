@@ -22,6 +22,7 @@ public class HomeScreen extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         bottomToolbar.setTitle("");
         bottomToolbar.setSubtitle("");
+
     }
 
     @Override
@@ -31,6 +32,8 @@ public class HomeScreen extends AppCompatActivity {
         return true;
     }
     //SOME COMMENT Add more comment
+
+    //some comment
 
 
     @Override
