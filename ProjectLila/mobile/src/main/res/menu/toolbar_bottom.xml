@@ -1,39 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.apurpura.projectlila.HomeScreen"
 >
 
     <item
         android:id="@+id/action_sequence_something"
         android:icon="@drawable/sequence_something"
         android:title="@string/sequence_something"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
 
     <item
         android:id="@+id/action_say_something"
         android:icon="@drawable/say_something"
         android:title="@string/say_something"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
 
     <item
         android:id="@+id/action_be_somewhere"
         android:icon="@drawable/be_somewhere"
         android:title="@string/be_somewhere"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
 
     <item
         android:id="@+id/action_do_something"
         android:icon="@drawable/do_something"
         android:title="@string/do_something"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
 
     <item
         android:id="@+id/action_get_metrics"
         android:icon="@drawable/get_metrics"
         android:title="@string/get_metrics"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
 
 
 </menu>
