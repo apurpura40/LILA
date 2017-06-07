@@ -1,34 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.apurpura.projectlila.DoSomethingEditCreate"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_width="match_parent">
+    tools:context="com.example.apurpura.projectlila.DoSomethingEditCreate">
 
-    <LinearLayout
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <android.support.design.widget.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:theme="@style/AppTheme">
-
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary" />
-
-        </android.support.design.widget.AppBarLayout>
+        <include layout="@layout/top_toolbar" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
+            android:layout_marginTop="?attr/actionBarSize"
             android:orientation="vertical">
 
             <android.support.design.widget.TextInputLayout
@@ -51,7 +41,7 @@
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/dateWrapper"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="6dp">
 
                 <EditText
@@ -67,7 +57,7 @@
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/startTimeWrapper"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="6dp">
 
                 <EditText
@@ -83,7 +73,7 @@
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/endTimeWrapper"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="6dp">
 
                 <EditText
@@ -98,7 +88,7 @@
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/additionalInformationWrapper"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="6dp">
 
                 <EditText
@@ -114,7 +104,7 @@
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/locationWrapper"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="6dp">
 
                 <AutoCompleteTextView
@@ -147,9 +137,19 @@
 
             </LinearLayout>
 
-            </LinearLayout>
+        </LinearLayout>
 
-    </LinearLayout>
+        <include layout="@layout/bottom_toolbar" />
+
+<!--        <android.support.v7.widget.ActionMenuView
+            android:id="@+id/bottom_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:layout_alignParentBottom="true"
+            android:elevation="4dp" />-->
+
+    </RelativeLayout>
 
 
 </android.support.design.widget.CoordinatorLayout>
