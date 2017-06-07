@@ -5,13 +5,12 @@ package com.example.apurpura.lifenavhelperapi;
  */
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
 
 public class Credentials {
@@ -20,12 +19,16 @@ public class Credentials {
     static final int REQUEST_GOOGLE_PLAY_SERVICES = 1002;
 
     public static boolean isGooglePlayServicesAvailable(final Activity activity) {
-        final int connectionStatusCode =
-                GooglePlayServicesUtil.isGooglePlayServicesAvailable(activity);
-        if (GooglePlayServicesUtil.isUserRecoverableError(connectionStatusCode)) {
-            showGooglePlayServicesAvailabilityErrorDialog(connectionStatusCode, activity);
-            return false;
-        } else if (connectionStatusCode != ConnectionResult.SUCCESS ) {
+        final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
+        GoogleApiAvailability apiAvailability = GoogleApiAvailability.getInstance();
+        int resultCode = apiAvailability.isGooglePlayServicesAvailable(activity);
+        if (resultCode != ConnectionResult.SUCCESS) {
+            if (apiAvailability.isUserResolvableError(resultCode)) {
+                apiAvailability.getErrorDialog(activity, resultCode, PLAY_SERVICES_RESOLUTION_REQUEST)
+                        .show();
+            } else {
+
+            }
             return false;
         }
         return true;
@@ -34,10 +37,10 @@ public class Credentials {
     /**
      * Display an error dialog showing that Google Play Services is missing
      * or out of date.
-     * @param connectionStatusCode code describing the presence (or lack of)
+     //* @param connectionStatusCode code describing the presence (or lack of)
      *     Google Play Services on this device.
      */
-    public static void showGooglePlayServicesAvailabilityErrorDialog(
+    /*public static void showGooglePlayServicesAvailabilityErrorDialog(
             final int connectionStatusCode, final Activity activity) {
         activity.runOnUiThread(new Runnable() {
             @Override
@@ -49,7 +52,7 @@ public class Credentials {
                 dialog.show();
             }
         });
-    }
+    }*/
 
     public static boolean isOnline() {
         ConnectivityManager conMgr = (ConnectivityManager) signonActivity
