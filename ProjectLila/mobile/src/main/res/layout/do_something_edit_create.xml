@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     tools:context="com.example.apurpura.projectlila.DoSomethingEditCreate">
 
 
@@ -11,13 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/menu_home_screen"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:layout_alignParentTop="true"
-            android:background="?attr/colorPrimary"
-            android:elevation="4dp" />
+        <include layout="@layout/top_toolbar" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -145,13 +139,15 @@
 
         </LinearLayout>
 
-        <android.support.v7.widget.ActionMenuView
+        <include layout="@layout/bottom_toolbar" />
+
+<!--        <android.support.v7.widget.ActionMenuView
             android:id="@+id/bottom_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             android:layout_alignParentBottom="true"
-            android:elevation="4dp" />
+            android:elevation="4dp" />-->
 
     </RelativeLayout>
 
