@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout
+<android.support.design.widget.CoordinatorLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         tools:context="com.example.apurpura.projectlila.HomeScreen"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
         >
 
     <RelativeLayout
@@ -61,4 +59,4 @@
 
     </RelativeLayout>
 
-</android.support.v4.widget.DrawerLayout>
+</android.support.design.widget.CoordinatorLayout>

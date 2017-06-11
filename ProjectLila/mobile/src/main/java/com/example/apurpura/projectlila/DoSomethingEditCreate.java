@@ -5,6 +5,7 @@ package com.example.apurpura.projectlila;
         import android.support.design.widget.FloatingActionButton;
         import android.support.design.widget.Snackbar;
         import android.support.v7.app.AppCompatActivity;
+        import android.support.v7.widget.ActionMenuView;
         import android.support.v7.widget.Toolbar;
         import android.view.View;
         import android.view.Menu;
@@ -15,26 +16,61 @@ public class DoSomethingEditCreate extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.do_something_edit_create);
-        Toolbar bottomToolbar = (Toolbar) findViewById(R.id.toolbar_bottom);
-        setSupportActionBar(bottomToolbar);
+        setContentView(R.layout.home_screen);
+        Toolbar toolbarTop = (Toolbar) findViewById(R.id.menu_home_screen);
+        setSupportActionBar(toolbarTop);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        toolbarTop.setTitle("");
+        toolbarTop.setSubtitle("");
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.toolbar_bottom, menu);
+        // Inflate the topToolbar menu
+        getMenuInflater().inflate(R.menu.menu_home_screen, menu);
+
+        // Inflate and initialize the bottom menu
+        ActionMenuView bottomBar = (ActionMenuView)findViewById(R.id.bottom_toolbar);
+        Menu toolbarBottom = bottomBar.getMenu();
+        getMenuInflater().inflate(R.menu.toolbar_bottom, toolbarBottom);
+        for (int i = 0; i < toolbarBottom.size(); i++) {
+            toolbarBottom.getItem(i).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                @Override
+                public boolean onMenuItemClick(MenuItem item) {
+ /*                   switch (item.getItemId()) {
+                        case R.id.action_sequence_something:
+
+                            return true;
+
+                        case R.id.action_say_something:
+
+                            return true;
+
+                        case R.id.action_be_somewhere:
+
+                            return true;
+
+                        case R.id.action_do_something:
+
+                            return true;
+
+                        case R.id.action_get_metrics:
+
+                            return true;
+
+                       default:
+                            // If we got here, the user's action was not recognized.
+                            // Invoke the superclass to handle it.
+                            return super.onOptionsItemSelected(item);*/
+                    return onOptionsItemSelected(item);
+                }
+            });
+        }
+
         return true;
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -50,5 +86,6 @@ public class DoSomethingEditCreate extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }
 
