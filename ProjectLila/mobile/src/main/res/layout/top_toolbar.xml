@@ -5,8 +5,8 @@ xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-
     >
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -20,11 +20,21 @@ xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true">
 
-            <ImageView
+<!--            <ImageView
                 android:id="@+id/calendar_profile_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/calendar_profile_icon" />
+
+                see http://www.android4devs.com/2015/06/navigation-view-material-design-support.html for use of de.hdodenhof-->
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/calendar_profile_icon"
+                app:civ_border_width="2dp"
+                app:civ_border_color="#FFFFFF"/>
 
 
             <TextView
