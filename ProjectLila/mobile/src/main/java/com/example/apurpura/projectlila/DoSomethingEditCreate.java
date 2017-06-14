@@ -1,6 +1,7 @@
 
 package com.example.apurpura.projectlila;
 
+        import android.content.Intent;
         import android.os.Bundle;
         import android.support.design.widget.FloatingActionButton;
         import android.support.design.widget.Snackbar;
@@ -38,31 +39,6 @@ public class DoSomethingEditCreate extends AppCompatActivity {
             toolbarBottom.getItem(i).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                 @Override
                 public boolean onMenuItemClick(MenuItem item) {
- /*                   switch (item.getItemId()) {
-                        case R.id.action_sequence_something:
-
-                            return true;
-
-                        case R.id.action_say_something:
-
-                            return true;
-
-                        case R.id.action_be_somewhere:
-
-                            return true;
-
-                        case R.id.action_do_something:
-
-                            return true;
-
-                        case R.id.action_get_metrics:
-
-                            return true;
-
-                       default:
-                            // If we got here, the user's action was not recognized.
-                            // Invoke the superclass to handle it.
-                            return super.onOptionsItemSelected(item);*/
                     return onOptionsItemSelected(item);
                 }
             });
@@ -83,6 +59,8 @@ public class DoSomethingEditCreate extends AppCompatActivity {
         if (id == R.id.action_settings) {
             return true;
         }
+
+
 
         return super.onOptionsItemSelected(item);
     }

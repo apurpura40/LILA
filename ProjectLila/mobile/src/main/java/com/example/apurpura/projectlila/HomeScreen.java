@@ -1,5 +1,6 @@
 package com.example.apurpura.projectlila;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.ActionMenuView;
 import android.support.v7.widget.RecyclerView;
@@ -35,39 +36,13 @@ public class HomeScreen extends AppCompatActivity {
         // Inflate the topToolbar menu
         getMenuInflater().inflate(R.menu.menu_home_screen, menu);
 
-        // Inflate and initialize the bottom menu
-        ActionMenuView bottomBar = (ActionMenuView)findViewById(R.id.bottom_toolbar);
+        ActionMenuView bottomBar = (ActionMenuView) findViewById(R.id.bottom_toolbar);
         Menu toolbarBottom = bottomBar.getMenu();
         getMenuInflater().inflate(R.menu.toolbar_bottom, toolbarBottom);
         for (int i = 0; i < toolbarBottom.size(); i++) {
             toolbarBottom.getItem(i).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                 @Override
-               public boolean onMenuItemClick(MenuItem item) {
- /*                   switch (item.getItemId()) {
-                        case R.id.action_sequence_something:
-
-                            return true;
-
-                        case R.id.action_say_something:
-
-                            return true;
-
-                        case R.id.action_be_somewhere:
-
-                            return true;
-
-                        case R.id.action_do_something:
-
-                            return true;
-
-                        case R.id.action_get_metrics:
-
-                            return true;
-
-                       default:
-                            // If we got here, the user's action was not recognized.
-                            // Invoke the superclass to handle it.
-                            return super.onOptionsItemSelected(item);*/
+                public boolean onMenuItemClick(MenuItem item) {
                     return onOptionsItemSelected(item);
                 }
             });
@@ -77,19 +52,27 @@ public class HomeScreen extends AppCompatActivity {
     }
 
 
-       @Override
-        public boolean onOptionsItemSelected(MenuItem item) {
-            // Handle action bar item clicks here. The action bar will
-            // automatically handle clicks on the Home/Up button, so long
-            // as you specify a parent activity in AndroidManifest.xml.
-            int id = item.getItemId();
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
 
-            //noinspection SimplifiableIfStatement
-            if (id == R.id.action_settings) {
-                return true;
-            }
-
-            return super.onOptionsItemSelected(item);
+        switch (item.getItemId()) {
+            case R.id.action_do_something:
+                //Intent doSomething = new Intent(this, DoSomethingEditCreate.class);
+                //this.startActivity(doSomething);
+                startActivity(new Intent(this, DoSomethingEditCreate.class));
+                break;
+            //case R.id.action_be_somewhere:
+            // break;
+            default:
+                return super.onOptionsItemSelected(item);
         }
+
+        return true;
+
+    }
+
 
 }
