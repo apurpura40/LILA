@@ -43,6 +43,7 @@ public class HomeScreen extends AppCompatActivity {
             toolbarBottom.getItem(i).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                 @Override
                 public boolean onMenuItemClick(MenuItem item) {
+
                     return onOptionsItemSelected(item);
                 }
             });

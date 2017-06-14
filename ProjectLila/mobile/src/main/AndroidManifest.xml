@@ -20,17 +20,17 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.example.apurpura.projectlila.DoSomethingEditCreate"
+        <activity android:name=".DoSomethingEditCreate"
             android:theme="@style/AppTheme">
-            <intent-filter>
-                <action android:name="com.example.apurpura.projectlila.DoSomethingEditCreate" />
+           <intent-filter>
+                <action android:name=".DoSomethingEditCreate" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
-        <activity
+<!--        <activity
             android:name="com.example.apurpura.lifenavhelperapi.SigningOnActivity">
-        </activity>
+        </activity>-->
 
 
     </application>
