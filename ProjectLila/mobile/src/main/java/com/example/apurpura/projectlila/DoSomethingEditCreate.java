@@ -2,21 +2,18 @@
 package com.example.apurpura.projectlila;
 
         import android.os.Bundle;
-        import android.support.design.widget.FloatingActionButton;
-        import android.support.design.widget.Snackbar;
-        import android.support.v7.app.AppCompatActivity;
-        import android.support.v7.widget.ActionMenuView;
-        import android.support.v7.widget.Toolbar;
-        import android.view.View;
-        import android.view.Menu;
-        import android.view.MenuItem;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.ActionMenuView;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 
 public class DoSomethingEditCreate extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home_screen);
+        setContentView(R.layout.do_something_edit_create);
         Toolbar toolbarTop = (Toolbar) findViewById(R.id.menu_home_screen);
         setSupportActionBar(toolbarTop);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
