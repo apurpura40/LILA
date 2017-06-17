@@ -28,9 +28,17 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name="com.example.apurpura.lifenavhelperapi.SigningOnActivity">
+        <activity android:name=".DoSomethingEditCreate"
+            android:theme="@style/AppTheme">
+           <intent-filter>
+                <action android:name=".DoSomethingEditCreate" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
+
+<!--        <activity
+            android:name="com.example.apurpura.lifenavhelperapi.SigningOnActivity">
+        </activity>-->
 
 
     </application>

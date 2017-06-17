@@ -120,13 +120,15 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:weightSum="1">
 
                 <CheckBox
                     android:id="@+id/Repeat"
-                    android:layout_width="200dp"
+                    android:layout_width="98dp"
                     android:layout_height="wrap_content"
-                    android:text="Repeat" />
+                    android:text="Repeat"
+                    android:layout_weight="0.95" />
 
                 <Button
                     android:id="@+id/Save"
