@@ -12,10 +12,8 @@ import android.util.Log;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.googleapis.extensions.android.gms.auth.GooglePlayServicesAvailabilityIOException;
 import com.google.api.client.googleapis.extensions.android.gms.auth.UserRecoverableAuthIOException;
-import com.google.api.client.googleapis.json.GoogleJsonResponseException;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.util.DateTime;
-import com.google.api.services.calendar.Calendar;
 import com.google.api.services.calendar.model.Event;
 import com.google.api.services.calendar.model.Events;
 
@@ -214,7 +212,7 @@ public class CalendarAPIHelperAsync extends AsyncTask<Void, Void, Void> {
         for(String email : calList.keySet()) {
             String calendarId=calList.get(email);
             PREFS_KEY = calendarId;
-            Calendar.Events.List request = Credentials.signonActivity.calendarService.events().list(calendarId).setShowDeleted(true).setTimeZone(tz);
+            //Calendar.Events.List request = Credentials.signonActivity.calendarService.events().list(calendarId).setShowDeleted(true).setTimeZone(tz);
 
             // Load the sync token stored from the last execution, if any.
             String syncToken = getValue(Credentials.signonActivity);
@@ -222,26 +220,26 @@ public class CalendarAPIHelperAsync extends AsyncTask<Void, Void, Void> {
                 System.out.println("Performing full sync eventResults.");
             } else {
                 System.out.println("Performing incremental sync eventResults.");
-                request.setSyncToken(syncToken);
+                //request.setSyncToken(syncToken);
             }
 
             // Retrieve the events, one page at a time.
             String pageToken = null;
             Events events = null;
             do {
-                request.setPageToken(pageToken);
-                try {
-                    events = request.execute();
-                } catch (GoogleJsonResponseException e) {
-                    if (e.response.statusCode == 410) {
+                //request.setPageToken(pageToken);
+                //try {
+                    //events = request.execute();
+                //} catch (GoogleJsonResponseException e) {
+                    //if (e.response.statusCode == 410) {
                         // A 410 status code, "Gone", indicates that the sync token is invalid.
                         System.out.println("Invalid sync token, clearing event store and re-syncing.");
-                        save(Credentials.signonActivity, null);
+                       // save(Credentials.signonActivity, null);
                         UpdateEvents();
-                    } else {
-                        throw e;
-                    }
-                }
+                    //} else {
+                       // throw e;
+                    //}
+                //}
 
                 List<Event> items = events.getItems();
                 if (items.size() == 0) {

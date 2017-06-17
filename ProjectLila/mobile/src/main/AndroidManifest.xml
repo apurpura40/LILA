@@ -15,8 +15,16 @@
         <activity android:name=".HomeScreen"
             android:theme="@style/AppTheme">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".DoSomethingEditCreate"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name=".DoSomethingEditCreate" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 

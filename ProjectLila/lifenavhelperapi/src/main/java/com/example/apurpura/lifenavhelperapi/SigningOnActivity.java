@@ -6,7 +6,6 @@ package com.example.apurpura.lifenavhelperapi;
 
 import android.accounts.AccountManager;
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -20,12 +19,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory;
-import com.google.api.client.json.gson.GsonFactory;
+import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.util.ExponentialBackOff;
 import com.google.api.services.calendar.CalendarScopes;
 
@@ -43,7 +42,7 @@ public class SigningOnActivity extends Activity {
     private TextView mStatusText;
     private TextView mResultsText;
     final HttpTransport transport = AndroidHttp.newCompatibleTransport();
-    final JsonFactory jsonFactory = GsonFactory.getDefaultInstance();
+    final JsonFactory jsonFactory = JacksonFactory.getDefaultInstance();
 
     static final int REQUEST_ACCOUNT_PICKER = 1000;
     static final int REQUEST_AUTHORIZATION = 1001;
@@ -94,6 +93,7 @@ public class SigningOnActivity extends Activity {
                 getApplicationContext(), Arrays.asList(SCOPES))
                 .setBackOff(new ExponentialBackOff())
                 .setSelectedAccountName(settings.getString(PREF_ACCOUNT_NAME, null));
+        String var = credential.getSelectedAccountName();
 
         calendarService = new com.google.api.services.calendar.Calendar.Builder(
                 transport, jsonFactory, credential)
@@ -175,6 +175,7 @@ public class SigningOnActivity extends Activity {
      * user can pick an account.
      */
     private void refreshResults() {
+        String var = credential.getSelectedAccountName();
         if (credential.getSelectedAccountName() == null) {
             chooseAccount();
         } else {
@@ -183,10 +184,12 @@ public class SigningOnActivity extends Activity {
                 Credentials.signonActivity = this;
                 /*Intent intent = new Intent(this, CalendarActivity.class);
                 startActivity(intent);*/
-                new StartEventSync(SigningOnActivity.this).execute();
+                //new StartEventSync(SigningOnActivity.this).execute();
 
-                //Intent intent = new Intent(this, MainMenu.class);
-                //startActivity(intent);//comeback
+                Intent returnIntent = new Intent();
+                returnIntent.putExtra("result","test");
+                setResult(Activity.RESULT_OK,returnIntent);
+                finish();
             } else {
                 mStatusText.setText("No network connection available.");
             }
@@ -235,14 +238,17 @@ public class SigningOnActivity extends Activity {
      *     date on this device; false otherwise.
      */
     private boolean isGooglePlayServicesAvailable() {
-        final int connectionStatusCode =
-                GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
-        if (GooglePlayServicesUtil.isUserRecoverableError(connectionStatusCode)) {
-            showGooglePlayServicesAvailabilityErrorDialog(connectionStatusCode);
-            return false;
-        } else if (connectionStatusCode != ConnectionResult.SUCCESS ) {
+        GoogleApiAvailability googleAPI = GoogleApiAvailability.getInstance();
+        int result = googleAPI.isGooglePlayServicesAvailable(this);
+        if(result != ConnectionResult.SUCCESS) {
+            if(googleAPI.isUserResolvableError(result)) {
+                googleAPI.getErrorDialog(this, result,
+                        REQUEST_GOOGLE_PLAY_SERVICES).show();
+            }
+
             return false;
         }
+
         return true;
     }
 
@@ -257,11 +263,13 @@ public class SigningOnActivity extends Activity {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                Dialog dialog = GooglePlayServicesUtil.getErrorDialog(
-                        connectionStatusCode,
-                        SigningOnActivity.this,
-                        REQUEST_GOOGLE_PLAY_SERVICES);
-                dialog.show();
+                GoogleApiAvailability apiAvailability = GoogleApiAvailability.getInstance();
+                apiAvailability.getErrorDialog(SigningOnActivity.this, connectionStatusCode, REQUEST_GOOGLE_PLAY_SERVICES).show();
+                //Dialog dialog = GooglePlayServicesUtil.getErrorDialog(
+                        //connectionStatusCode,
+                        //SigningOnActivity.this,
+                       // REQUEST_GOOGLE_PLAY_SERVICES);
+                //dialog.show();
             }
         });
     }

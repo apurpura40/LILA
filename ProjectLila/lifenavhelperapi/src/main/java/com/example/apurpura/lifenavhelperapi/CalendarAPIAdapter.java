@@ -9,7 +9,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.google.api.client.googleapis.extensions.android.gms.auth.UserRecoverableAuthIOException;
 import com.google.api.services.calendar.model.CalendarList;
 import com.google.api.services.calendar.model.CalendarListEntry;
 
@@ -30,9 +29,9 @@ public class CalendarAPIAdapter {
         if (!calList.containsKey(Credentials.credential.getSelectedAccountName())){
             com.google.api.services.calendar.model.Calendar calendar = new com.google.api.services.calendar.model.Calendar();
             calendar.setSummary(Credentials.credential.getSelectedAccountName() + " MARA");
-            com.google.api.services.calendar.model.Calendar newC = Credentials.signonActivity.calendarService.calendars().insert(calendar).execute();
-            addCalendarDBEntry(Credentials.credential.getSelectedAccountName(), newC.getId());
-            id = newC.getId();
+            //com.google.api.services.calendar.model.Calendar newC = Credentials.signonActivity.calendarService.calendars().insert(calendar).execute();
+            //addCalendarDBEntry(Credentials.credential.getSelectedAccountName(), newC.getId());
+            //id = newC.getId();
         }else{
             id = calList.get(Credentials.credential.getSelectedAccountName());
         }
@@ -60,13 +59,13 @@ public class CalendarAPIAdapter {
         String pageToken = null;
         do {
             CalendarList calendarList = null;
-            try {
-                calendarList = Credentials.signonActivity.calendarService.calendarList().list().setPageToken(pageToken).execute();
-            }  catch (UserRecoverableAuthIOException e) {
-                mActivity.startActivity(e.getIntent());
-            }catch(Exception e){
+            //try {
+                //calendarList = Credentials.signonActivity.calendarService.calendarList().list().setPageToken(pageToken).execute();
+            //}  catch (UserRecoverableAuthIOException e) {
+               // mActivity.startActivity(e.getIntent());
+            //}catch(Exception e){
                 RefreshCredentialsService.refreshCredentials();
-            }
+            //}
             if(calendarList == null)
                 return calList;
             List<CalendarListEntry> items = calendarList.getItems();
