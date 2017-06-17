@@ -1,14 +1,15 @@
 package com.example.apurpura.projectlila;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ActionMenuView;
-import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.support.v7.widget.Toolbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v4.widget.DrawerLayout;
 
+import com.example.apurpura.lifenavhelperapi.SigningOnActivity;
 
 
 /**
@@ -21,12 +22,9 @@ public class HomeScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home_screen);
-        Toolbar toolbarTop = (Toolbar) findViewById(R.id.menu_home_screen);
-        setSupportActionBar(toolbarTop);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        toolbarTop.setTitle("");
-        toolbarTop.setSubtitle("");
+
+        Intent i = new Intent(this, SigningOnActivity.class);
+        startActivityForResult(i, 1);
 
     }
 
@@ -91,5 +89,25 @@ public class HomeScreen extends AppCompatActivity {
 
             return super.onOptionsItemSelected(item);
         }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == 1) {
+            if(resultCode == Activity.RESULT_OK){
+                String result=data.getStringExtra("result");
+
+                setContentView(R.layout.home_screen);
+                Toolbar toolbarTop = (Toolbar) findViewById(R.id.menu_home_screen);
+                setSupportActionBar(toolbarTop);
+                getSupportActionBar().setDisplayShowTitleEnabled(false);
+                toolbarTop.setTitle("");
+                toolbarTop.setSubtitle("");
+            }
+            if (resultCode == Activity.RESULT_CANCELED) {
+                //Write your code if there's no result
+            }
+        }
+    }//onActivityResult
 
 }
